@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>RPS</title>
+</head>
+<body>
+  <h1>Wins <span id="wins">0</span></h1>
+  <h1>Losses <span id="losses">0</span></h1>
+  <h1>Ties <span id="ties">0</span></h1>
+  <h1>Computer Choice <span id="cpChoice">No Choice yet</span></h1>
+  <h1>User Choice <span id="userChoice">No Choice yet</span></h1>
+
+  <script>
+    // We need computer choices
+    var choices = ["r", "p", "s"];
+    var wins    = 0;
+    var losses  = 0;
+    var ties    = 0;
+    // variables for wins, 
+    // variable for losses
+    // variable for ties
+
+    var $wins       = document.getElementById("wins");
+    var $losses     = document.getElementById("losses");
+    var $ties       = document.getElementById("ties");
+    var $cpChoice   = document.getElementById("cpChoice");
+    var $userChoice = document.getElementById("userChoice");
+    // Create variable for each html element to update their text
+
+
+    // on key up, 
+    document.onkeyup = function(event){
+    // generate a random choice for computer
+      var computerChoice = choices[Math.floor(Math.random() * choices.length)];
+      var userChoice = event.key;
+
+      // check to see win conditions
+      if((userChoice === 'r' && computerChoice === 's') ||
+         (userChoice === 'p' && computerChoice === 'r') ||
+         (userChoice === 's' && computerChoice === 'p')) {
+           wins++;
+           $wins.textContent = wins;
+           $userChoice.textContent = userChoice;
+           $cpChoice.textContent = computerChoice;
+      } 
+      else if (userChoice === computerChoice) {
+        ties++;
+        $ties.textContent = ties;
+        $userChoice.textContent = userChoice;
+        $cpChoice.textContent = computerChoice;
+      } 
+      else if ((computerChoice === 'r' && userChoice === 's') ||
+              (computerChoice === 'p' && userChoice === 'r') ||
+              (computerChoice === 's' && userChoice === 'p')) {
+        losses++;
+        $losses.textContent = losses;
+        $userChoice.textContent = userChoice;
+        $cpChoice.textContent = computerChoice;
+      } else {
+        alert("You need to press either R, S, or P");
+      }
+    }
+    
+        // if i choose rock and computer chooses scissors 
+        // or if i choose paper and computer chooses rock
+        // of if i choose scissors and computer chooses paper
+            // increase my variable for wins by 1
+            // update the UI
+      
+      //  Check for ties
+      // check if i playerChoice === cpChoice;
+      // tie++
+      // update the ui
+      // computer chooses scissors and i choose paper
+      // cp chooses rock and i choose scissor
+      // if cp chooses paper and i choose rock
+        // losses ++
+        // update ui
+      
+    </script>
+  </body>
+  </html>
+  
